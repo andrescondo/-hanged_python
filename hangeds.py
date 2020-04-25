@@ -88,8 +88,7 @@ def display_board(hidden_word, tries):
   print(IMAGES[tries])
   print('\n')
   print(hidden_word)
-  print('\n')
-  print(' -- * -- * -- * -- * -- * -- * ')
+  print(' --- * --- * --- * --- * --- * --- * --- * --- * ')
 
 
 def run():
@@ -99,8 +98,21 @@ def run():
 
   while True:
     display_board(hidden_word, tries)
-    current_letter = str(raw_input('Ingrese una palabra: '))
+    current_letter = str(raw_input('Ingrese un caracter: '))
 
+    letter_indexes = []
+    for idx in range(len(word)):
+      if word[idx] == current_letter:
+        letter_indexes.append(idx)
+
+    if len(letter_indexes) == 0 :
+      tries += 1
+
+    else: 
+      for idx in  letter_indexes:
+        hidden_word[idx] = current_letter
+
+      letter_indexes = []
 
 if __name__ == '__main__':
     print('B I E N V E N I D O   A  A H O R C A D O S ')
